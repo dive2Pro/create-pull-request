@@ -30,6 +30,7 @@ export interface Inputs {
   teamReviewers: string[]
   milestone: number
   draft: boolean
+  dest: string
 }
 
 export async function createPullRequest(inputs: Inputs): Promise<void> {
@@ -56,7 +57,7 @@ export async function createPullRequest(inputs: Inputs): Promise<void> {
     core.startGroup('Determining the base and head repositories')
     // Determine the base repository from git config
     const remoteUrl = await git.tryGetRemoteUrl()
-    const baseRemote = utils.getRemoteDetail(remoteUrl)
+    const baseRemote = utils.getRemoteDetail(inputs.dest || remoteUrl)
     // Determine the head repository; the target for the pull request branch
     const branchRemoteName = inputs.pushToFork ? 'fork' : 'origin'
     const branchRepository = inputs.pushToFork
