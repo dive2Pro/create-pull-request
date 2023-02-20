@@ -86,7 +86,7 @@ export async function createPullRequest(inputs: Inputs): Promise<void> {
     }
     core.endGroup()
     core.info(
-      `Pull request branch target repository set to ${branchRepository}`
+      `Pull request branch target repository set to ${branchRepository} ${inputs.dest}`
     )
 
     // Configure auth
