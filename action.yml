@@ -8,6 +8,9 @@ inputs:
     description: >
       Relative path under $GITHUB_WORKSPACE to the repository.
       Defaults to $GITHUB_WORKSPACE.
+  path:
+    description: >
+      the source repository.
   add-paths:
     description: >
       A comma or newline-separated list of file paths to commit.
