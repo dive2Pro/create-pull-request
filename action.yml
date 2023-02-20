@@ -8,7 +8,7 @@ inputs:
     description: >
       Relative path under $GITHUB_WORKSPACE to the repository.
       Defaults to $GITHUB_WORKSPACE.
-  path:
+  dest:
     description: >
       the source repository.
   add-paths:
