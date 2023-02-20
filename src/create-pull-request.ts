@@ -57,12 +57,12 @@ export async function createPullRequest(inputs: Inputs): Promise<void> {
     core.startGroup('Determining the base and head repositories')
     // Determine the base repository from git config
     const remoteUrl = await git.tryGetRemoteUrl()
-    const baseRemote = utils.getRemoteDetail(inputs.dest || remoteUrl)
+    const baseRemote = utils.getRemoteDetail(remoteUrl)
     // Determine the head repository; the target for the pull request branch
     const branchRemoteName = inputs.pushToFork ? 'fork' : 'origin'
     const branchRepository = inputs.pushToFork
       ? inputs.pushToFork
-      : baseRemote.repository
+      : inputs.dest || baseRemote.repository
     if (inputs.pushToFork) {
       // Check if the supplied fork is really a fork of the base
       core.info(
